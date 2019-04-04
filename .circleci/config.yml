@@ -36,12 +36,12 @@ jobs:
       # run tests!
       # - run: npm test
       - run:
-        name: install-snyk
-        command: 'sudo npm install -g snyk'
+          name: install-snyk
+          command: 'sudo npm install -g snyk'
       - run: 
-        name: snyk auth
-        command: snyk auth $SNYK_TOKEN
+          name: snyk auth
+          command: snyk auth $SNYK_TOKEN
       - run:
-        name: snyk test
-        command: snyk test
+          name: snyk test
+          command: snyk test
 
