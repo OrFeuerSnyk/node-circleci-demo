@@ -45,3 +45,7 @@ jobs:
           name: snyk test
           command: snyk test
 
+      - run: heroku auth:token $HEROKU_TOKEN
+      - run: git remote add heroku https://git.heroku.com/stormy-river-85332.git
+      - run: git push heroku master
+      - run: heroku ps:scale web=1
