@@ -35,17 +35,22 @@ jobs:
 
       # run tests!
       # - run: npm test
-      - run:
-          name: install-snyk
-          command: 'sudo npm install -g snyk'
-      - run: 
-          name: snyk auth
-          command: snyk auth $SNYK_TOKEN
-      - run:
-          name: snyk test
-          command: snyk test
 
-      - run: heroku auth:token $HEROKU_TOKEN
-      - run: git remote add heroku https://git.heroku.com/stormy-river-85332.git
-      - run: git push heroku master
+      # snyk tests
+      # - run:
+      #     name: install-snyk
+      #     command: 'sudo npm install -g snyk'
+      # - run: 
+      #     name: snyk auth
+      #     command: snyk auth $SNYK_TOKEN
+      # - run:
+      #     name: snyk test
+      #     command: snyk test
+
+      - run:
+        name: deploy to Heroku
+        command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+    
       - run: heroku ps:scale web=1
+
+      - run: echo "done"
